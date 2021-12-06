@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>appleCider</title>
+        <link rel="stylesheet" href="../CSS/general.css"/>
+        <link rel="stylesheet" href="../CSS/tables.css"/>
+        <meta charset="utf-8"/>
+        <script src="../scripts/ciderMaker.js">
+
+        </script>
+    </head>
+    <body>
+        <h2>Cider Maker</h2>
+        <p class="display">by Jack</p>
+        <p class="display">Choose how you make your own cider | <a href="../index.html">Back to home</a>
+        </p>
+        <div id="rightFloatStats">
+            Total Cost: $
+            <span id="totalCost">0.00</span>
+            <div>
+                Total lbs:
+                <span id="totalWeight">0.00</span>lbs = <span id="totalGallons">0.00</span>gal
+            </div>
+        </div>
+        <table>
+            <tr><th colspan="9">Choose apple type and quantity</th></tr>
+            <tr><th colspan="5">Sweet</th><th colspan="4">Acidic</th></tr>
+            <tr>
+                <td>Gala $2.27/lb<br>Sweetness: 1.0<br>Acidity: 0.2
+                    <div class="imgbox">
+                        <img class= "center-fit" src="../images/apple images/Gala_200x200.png" alt="" >
+                        <input class="align-input appleInput" type="number" id="quantityGala" value="0" min="0">
+                    </div>
+                </td>
+                <td>Fuji $1.47/lb<br>Sweetness: 1.0<br>Acidity: 0.2
+                    <div class="imgbox">
+                        <img class= "center-fit" src="../images/apple images/Fuji-200x200.png" alt="" >
+                        <input class="align-input appleInput" type="number" id="quantityFuji" value="0" min="0">
+                    </div>
+                </td>
+                <td>Cortland $1.67/lb<br>Sweetness: 0.8<br>Acidity: 0.4
+                    <div class="imgbox">
+                        <img class= "center-fit" src="../images/apple images/Cortland-Apple_200x200.png" alt="" >
+                        <input class="align-input appleInput" type="number"  id="quantityCortland" value="0" min="0">
+                    </div>
+                </td>
+                <td>Golden Delicious $1.50/lb<br>Sweetness: 0.6<br>Acidity: 0.4
+                    <div class="imgbox">
+                        <img class= "center-fit" src="../images/apple images/Golden-Del-200x200.png" alt="" >
+                        <input class="align-input appleInput" type="number"  id="quantityGoldDel" value="0" min="0">
+                    </div>
+                </td>
+                <td>Red Delicious $1.47/lb<br>Sweetness: 0.5<br>Acidity: 0.5
+                    <div class="imgbox">
+                        <img class= "center-fit" src="../images/apple images/Red-Del-200x200.png" alt="" >
+                        <input class="align-input appleInput" type="number"  id="quantityRedDel" value="0" min="0">
+                    </div>
+                </td>
+                <td>Pink Lady $1.97/lb<br>Sweetness: 0.4<br>Acidity: 1.0
+                    <div class="imgbox">
+                        <img class= "center-fit" src="../images/apple images/Pink-Lady_200x200.png" alt="" >
+                        <input class="align-input appleInput" type="number"  id="quantityPinkLady" value="0" min="0">
+                    </div>
+                </td>
+                <td>Braeburn $2.27/lb<br>Sweetness: 0.2<br>Acidity: 0.8
+                    <div class="imgbox">
+                        <img class= "center-fit" src="../images/apple images/Braeburn-200px.png" alt="" >
+                        <input class="align-input appleInput" type="number"  id="quantityBraeburn" value="0" min="0">
+                    </div>
+                </td>
+                <td>Jonathan $1.26/lb<br>Sweetness: 0.4<br>Acidity: 0.4
+                    <div class="imgbox">
+                        <img class= "center-fit" src="../images/apple images/Jonathan-Apple_200x200.png" alt="" >
+                        <input class="align-input appleInput" type="number"  id="quantityJonathan" value="0" min="0">
+                    </div>
+                </td>
+                <td>McIntosh $1.26/lb<br>Sweetness: 0.2<br>Acidity: 0.7
+                    <div class="imgbox">
+                        <img class= "center-fit" src="../images/apple images/McIntosh-200px.png" alt="" >
+                        <input class="align-input appleInput" type="number"  id="quantityMcIntosh" value="0" min="0">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="9">Choose apple quality</th>
+            </tr>
+            <tr>
+                <td colspan="9">
+                    <div class="six-choice-grid">
+                        <span class="grid-item quality-option">Underripe (cost x0.75)
+                            <div>
+                                &nbsp;
+                            </div>
+                            <div>
+                                <img class="center-fit" src="../images/apple images/UnripeApples_200x200.jpg" alt="">
+                            </div>
+                        </span>
+                        <span class="grid-item quality-option">Fresh from the tree (cost x1.2)
+                            <div>
+                                &nbsp;
+                            </div>
+                            <div>
+                                <img class="center-fit" src="../images/apple images/FreshOffTheTree-200x200.jpg" alt="">
+                            </div>
+                        </span>
+                        <span class="grid-item quality-option">Chilling (cost x1)
+                            <div>
+                                &nbsp;
+                            </div>
+                            <div>
+                                <img class="center-fit" src="../images/apple images/AppleInFridge-200x200.jpg" alt="">
+                            </div>
+                        </span>
+                        <span class="grid-item quality-option">Sitting out for a while (cost x0.8)
+                            <div>
+                                &nbsp;
+                            </div>
+                            <div>
+                                <img class="center-fit" src="../images/apple images/SittingOut_200x200.jpg" alt="">
+                            </div>
+                        </span>
+                        <span class="grid-item quality-option">A few rough patches (cost x0.65)
+                            <div>
+                                &nbsp;
+                            </div>
+                            <div>
+                                <img class="center-fit" src="../images/apple images/AppleBlemishes-200x200.jpg" alt="">
+                            </div>
+                        </span>
+                        <span class="grid-item quality-option">Bottom of the barrel (cost x0.05)
+                            <div>
+                                &nbsp;
+                            </div>
+                            <div>
+                                <img class="center-fit" src="../images/apple images/RottenApple_200x200.jpg" alt="">
+                            </div>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="9">Choose Apple Processing</th>
+            </tr>
+            <tr>
+                <td colspan="9">
+                    <div class="six-choice-grid">
+                        <span class="grid-item processing-option">Fruit press (cost x1.5)
+                            <div>&nbsp;</div>
+                            <div>
+                                <img class="center-fit" src="../images/processing images/Hydraulic_apple_grape_juice_press_200x200.jpg">
+                            </div>
+                        </span>
+                        <span class="grid-item processing-option">Food processor (cost x1.3)
+                            <div>&nbsp;</div>
+                            <div>
+                                <img class="center-fit" src="../images/processing images/food_processor-200x200_.jpg" alt="">
+                            </div>
+                        </span>
+                        <span class="grid-item processing-option">Blender (cost x1.2)
+                            <div>&nbsp;</div>
+                            <div>
+                                <img class="center-fit" src="../images/processing images/blender-200x200.jpg" alt="">
+                            </div>
+                        </span>
+                        <span class="grid-item processing-option">Food chopper (cost x1.15)
+                            <div>&nbsp;</div>
+                            <div>
+                                <img class="center-fit" src="../images/processing images/food_chopper-200x200_.jpg" alt="">
+                            </div>
+                        </span>
+                        <span class="grid-item processing-option">Knife (cost x1.1)
+                            <div>&nbsp;</div>
+                            <div>
+                                <img class="center-fit" src="../images/processing images/kitchen_knife-200x200.jpg" alt="">
+                            </div>
+                        </span>
+                        <span class="grid-item processing-option">Fists (cost x1.0)
+                            <div>&nbsp;</div>
+                            <div>
+                                <img class="center-fit" src="../images/processing images/fists-200x200.png" alt="">
+                            </div>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="9">Input Fermentation Period</th>
+            </tr>
+            <tr>
+                <td colspan="9">
+                    Input number of days to ferment:
+                    <input type="number" id="fermentationDays" value="0" min="0">
+                </td>
+            </tr>
+            <tr class="fermentation-dependent">
+                <th colspan="9">Choose Fermentation Site</th>
+            </tr>
+            <tr class="fermentation-dependent">
+                <td colspan="9">
+                    <div class="six-choice-grid">
+                        <span class="grid-item site-option">Local orchard (cost x1.5xDays)
+                            <div>&nbsp;</div>
+                            <div>
+                                <img class="center-fit" src="../images/site images/Orchard-200x200.jpg" alt="">
+                            </div>
+                        </span>
+                        <span class="grid-item site-option">Industrial vat (cost x1.3xDays)
+                            <div>&nbsp;</div>
+                            <div>
+                                <img class="center-fit" src="../images/site images/industrial_vat-200x200.jpg" alt="">
+                            </div>
+                        </span>
+                        <span class="grid-item site-option">Cellar (cost x1.1xDays)
+                            <div>&nbsp;</div>
+                            <div>
+                                <img class="center-fit" src="../images/site images/cellar-200x200.jpg" alt="">
+                            </div>
+                        </span>
+                        <span class="grid-item site-option">Pantry (cost x1.05xDays)
+                            <div>&nbsp;</div>
+                            <div>
+                                <img class="center-fit" src="../images/site images/pantry-200x200.jfif" alt="">
+                            </div>
+                        </span>
+                        <span class="grid-item site-option">Vinnie's Moonshine Shack (cost x1.01xDays)
+                            <div>&nbsp;</div>
+                            <div>
+                                <img class="center-fit" src="../images/site images/shack-200x200.jpg" alt="">
+                            </div>
+                        </span>
+                        <span class="grid-item site-option">Great outdoors (cost x1.0xDays)
+                            <div>&nbsp;</div>
+                            <div>
+                                <img class="center-fit" src="../images/site images/outdoors-200x200.jpg" alt="">
+                            </div>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="9">Input Pasteurization Temperature</th>
+            </tr>
+            <tr>
+                <td colspan="9">
+                    Input pasteurization temperature in degrees Fahrenheit:
+                    <input type="number" id="pasteurizationTemp" value="100">
+                </td>
+            </tr>
+        </table>
+        <h2 style="text-align: center;">All set?</h2>
+        <h1>
+            <button id="submitButton" style="width: 200px; height: 100px; font-size: x-large; font-weight: bold; color: red; background-color: beige;">
+                Craft your cider!
+            </button>
+        </h1>
+
+        <div id="curatorModal" class="curatorModal">
+            <div class="modal-content" id="loading">
+                <span class="close">&times;</span>
+                <div>
+                    <img src="../GIFs/cider-loading-500x500.gif" alt="" style="width: 20%; display: block; margin-left: auto; margin-right: auto;">
+                </div>
+                <h2 id="curatorStatus">The curator is taste testing...</h2>
+                <div id="curatorProgress">
+                    <div id="progressBar">1%</div>
+                </div>
+            </div>
+            <div class="modal-content" style="display: none" id="curatorApproves">
+                <span class="close">&times;</span>
+                <div>
+                    <img src="../images/curator images/approval.jpg" alt="" style="width: 20%; display: block; margin-left: auto; margin-right: auto;">
+                </div>
+                <h2>I would pay $<span id="approvalPrice"></span> for a gallon of this cider!</h2>
+                <h2>Profit: <span id="profit"></span>/Gallon | Total Profit: <span id="totalProfit"></span></h2>
+            </div>
+            <div class="modal-content" style="display: none" id="curatorDisapproves">
+                <span class="close">&times;</span>
+                <div>
+                    <img src="../images/curator images/frown.jpg" alt="" style="width: 20%; display: block; margin-left: auto; margin-right: auto;">
+                </div>
+                <h2 id="disapprovalReason"></h2>
+            </div>
+            <div class="modal-content" style="display: none" id="curatorOkay">
+                <span class="close">&times;</span>
+                <div>
+                    <img src="../images/curator images/okay.jpg" alt="" style="width: 20%; display: block; margin-left: auto; margin-right: auto;">
+                </div>
+            </div>
+            <div class="modal-content" style="display: none" id="curatorConfused">
+                <span class="close">&times;</span>
+                <div>
+                    <img src="../images/curator images/confused.jpg" alt="" style="width: 20%; display: block; margin-left: auto; margin-right: auto;">
+                </div>
+                <h2 id="confusionReason"></h2>
+            </div>
+            <div class="modal-content" style="display: none" id="curatorSick">
+                <span class="close">&times;</span>
+                <div>
+                    <img src="../images/curator images/sick.jpg" alt="" style="width: 20%; display: block; margin-left: auto; margin-right: auto;">
+                </div>
+                <div>
+                    <h2>You have made the curator sick!</h2>
+                </div>
+            </div>
+            <div class="modal-content" style="display: none" id="curatorDies">
+                <span class="close">&times;</span>
+                <div>
+                    <img src="../images/curator images/dead.jpg" alt="" style="width: 20%; display: block; margin-left: auto; margin-right: auto;">
+                </div>
+                <div>
+                    <h2>The curator has died <span id="alcohol"></span>after ingesting your cider.</h2>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
