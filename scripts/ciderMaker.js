@@ -163,6 +163,7 @@ function appleSite()
             }
         });
     }
+    // if fermentation value is becomes 0, then it calls the reset function
     let appleFermentation = document.getElementById("fermentationDays");
     appleFermentation.addEventListener("input", function()
     {
@@ -174,6 +175,7 @@ function appleSite()
     });
 }
 
+//resets the site section css and updates all the values
 function resetAppleSite(siteMultiplier)
 {
     costMultiplier /= siteMultiplier;
@@ -183,6 +185,7 @@ function resetAppleSite(siteMultiplier)
     update();
 }
 
+// sets the pasteurization value
 function applePasteurization()
 {
     let applePasteurization = document.getElementById("pasteurizationTemp");
@@ -192,21 +195,24 @@ function applePasteurization()
     });
 }
 
+//load the curator modal
 function loadCurator()
 {
     let modal = document.getElementById("curatorModal");
     let button = document.getElementById("submitButton");
     let closeSpan = document.getElementsByClassName("close");
 
-    // When the user clicks on the button, open the modal
+    // open the modal when the button is clicked
     button.addEventListener("click", function()
     {
-        let modalContents = document.getElementsByClassName("modal-content");
+        let modalContents = document.getElementsByClassName("modal-content"); //all possible modal screens
+        //first close all possible modal contents
         for (let i=0; i<modalContents.length; i++)
         {
             modalContents[i].style.display = "none";
         }
-        document.getElementById("loading").style.display = "block";
+        document.getElementById("loading").style.display = "block"; //open the loading screen
+        //check to make sure all fields are filled out: either fermentationVal is 0 and there is no siteVal, or fermentationVal is greater than 0 and there is a siteVal
         if((sweetnessVal && tanginessVal && qualityVal && processingVal && !fermentationVal) || (fermentationVal && sweetnessVal && tanginessVal && qualityVal && processingVal && siteVal))
         {
             modal.style.display = "block";
@@ -217,6 +223,7 @@ function loadCurator()
         
     });
 
+    //x button for all modal screens, closes the modal
     for(let i = 0; i < closeSpan.length; i++)
     {
         closeSpan[i].addEventListener("click", function()
@@ -225,6 +232,7 @@ function loadCurator()
     });
     }
 
+    //closes the modal screen if the users clicks outside of it
     window.addEventListener("click", function(event)
     {
         if (event.target == modal) {
@@ -233,6 +241,7 @@ function loadCurator()
     });   
 }
 
+//function for the progress bar, because why not?
 function loadProgress() 
 {
     let curatorStatus = document.getElementById("curatorStatus");
@@ -243,7 +252,7 @@ function loadProgress()
         i = true;
         let progressBar = document.getElementById("progressBar");
         let barWidth = 1;
-        let id = setInterval(frame, 20);
+        let id = setInterval(frame, 20); //run each frame 20 milliseconds between each other
         function frame() 
         {
             if (barWidth >= 100) 
@@ -252,12 +261,12 @@ function loadProgress()
                 setTimeout(function()
                 {
                     calculateCurator();
-                }, 1000);
+                }, 1000); // load the curator results one second after the loading bar finihses
                 clearInterval(id);
                 barWidth = 1;
                 i = false;
             } 
-            else 
+            else //increase the barWidth
             {
                 barWidth++;
                 progressBar.style.width = barWidth + "%";
@@ -271,12 +280,12 @@ function calculateCurator()
 {
     let sweetness = 0, tanginess = 0, deliciousness = 0, bite = 10, sickness = 0;
     console.log(sweetnessVal, tanginessVal, qualityVal, processingVal, fermentationVal, siteVal, pasteurizationVal);
-    sweetness = sweetnessVal*100;
-    tanginess = tanginessVal*100;
+    sweetness = sweetnessVal*100; //sweetnessVal is a weighted average of the apple sweetness values between 0 and 1. sweetness multiplies it by 100
+    tanginess = tanginessVal*100; //tanginess is the same procedure as sweetness
     
-    deliciousness = sweetness+tanginess - Math.abs(sweetness - tanginess);
+    deliciousness = sweetness+tanginess - Math.abs(sweetness - tanginess); //deliciousness is initially dependent on the sum of the sweetness and tanginess minus their difference
 
-    switch (qualityVal)
+    switch (qualityVal) //different quality selections yield different results
     {
         case 'unripe':
             bite = 0;
@@ -306,7 +315,7 @@ function calculateCurator()
         default:
             sickness +=5;
     }
-    switch (processingVal)
+    switch (processingVal) //different processing selections
     {
         case 'press':
             deliciousness *= 1.5;
@@ -336,7 +345,7 @@ function calculateCurator()
             sickness +=5;
     }
         
-    switch (siteVal)
+    switch (siteVal) //different site selections
     {
         case 'orchard':
             sickness += 1;
@@ -359,7 +368,7 @@ function calculateCurator()
         default:
             sickness += 5;
     }
-    if(fermentationVal)
+    if(fermentationVal) //if fermentation is positive, deliciousness increases but may also decrease. Sickness increases, and bite also increases
     {
         deliciousness *= 1+Math.log(fermentationVal);
         deliciousness -= 2*(Math.abs(sweetness - tanginess))*1.1**fermentationVal;
@@ -367,7 +376,7 @@ function calculateCurator()
         bite *= 1+Math.log(fermentationVal);
     }
 
-    if (pasteurizationVal < 160)
+    if (pasteurizationVal < 160) // pasteurization values below 160 increase sickness, pasteurization values above 185 decrease deliciousness
         sickness *= (1 + (160 - pasteurizationVal)/10)**3;
     else if (pasteurizationVal > 185)
     {
@@ -378,65 +387,66 @@ function calculateCurator()
         sickness /= 1.5
 
     console.log(deliciousness, bite, sickness);
-    curatorResults(deliciousness, bite, sickness);
+    curatorResults(deliciousness, bite, sickness); //call the curator results
     
 }
 
+//calculate the curator results
 function curatorResults(deliciousness, bite, sickness)
 {
-    let loading = document.getElementById("loading");
+    let loading = document.getElementById("loading"); //close the loading screen
     loading.style.display = "none";
-    let purchasePrice = (deliciousness/10) * bite / sickness;
+    let purchasePrice = (deliciousness/10) * bite / sickness; //price is dependent on deliciousness, bite, and sickness
 
-    if (sickness > 100 && sickness < 1000)
+    if (sickness > 100 && sickness < 1000) //if the sickness levels are between 100 and 1000, the curator becomes sick
         document.getElementById("curatorSick").style.display = "block";
-    else if (sickness >= 1000)
+    else if (sickness >= 1000) //if the sickness level surpasses 1000, the curator dies from spoiled, bad cider
         document.getElementById("curatorDies").style.display = "block";
-    else if (bite >= 60)
+    else if (bite >= 60) //if the bite surpasses 60, the alcohol content becomes too much
     {
         document.getElementById("curatorDies").style.display = "block";
         document.getElementById("alcohol").innerHTML = "from alcohol poisoning ";
     }
-    else if (bite === 0)
+    else if (bite === 0) //if bite is 0, the curator is unhappy due to the flat cider
     {
         document.getElementById("curatorDisapproves").style.display = "block";
         document.getElementById("disapprovalReason").innerHTML = "This cider is flat";
     }
-    else if(deliciousness > 100 && bite < 15)
+    else if(deliciousness > 100 && bite < 15) //if deliciousness is high yet bite is low, then the curator is confused because it's effectively apple juice
     {
         document.getElementById("curatorConfused").style.display = "block";
         document.getElementById("confusionReason").innerHTML = "This is basically apple juice";
     }
-    else if(deliciousness < 100)
+    else if(deliciousness < 100) //if deliciousness is low, curator is unhappy because it tastes bad
     {
         document.getElementById("curatorDisapproves").style.display = "block";
         document.getElementById("disapprovalReason").innerHTML = "This doesn't taste good.";
     }
-    else if(deliciousness > 100 && bite >=15)
+    else if(deliciousness > 100 && bite >=15) //if the deliciousness and bite are sufficiently high, the curator is happy and gives a price
     {
         document.getElementById("curatorApproves").style.display = "block";
         document.getElementById("approvalPrice").innerHTML = purchasePrice.toFixed(2);
         let profitSpan = document.getElementById("profit");
         let totalProfitSpan = document.getElementById("totalProfit");
         let profit = (purchasePrice - totalCost*costMultiplier/totalGal).toFixed(2);
-        if (profit < 0)
+        if (profit < 0) //red if negative profit
         {
             profitSpan.style.color = "red";
             totalProfitSpan.style.color = "red";
         }
-        else
+        else // green is nonnegative profit
         {
             profitSpan.style.color = "lime";
             totalProfitSpan.style.color = "lime";
         }
         profitSpan.innerHTML = "$" + profit;
-        totalProfitSpan.innerHTML = "$" + (profit * totalGal).toFixed(2);
+        totalProfitSpan.innerHTML = "$" + (profit * totalGal).toFixed(2); 
     }
 
     let modal = document.getElementById("curatorModal");
-    
     let closeSpan = document.getElementsByClassName("close");
 
+    //close the modal is the x button is clicked
     for(let i = 0; i < closeSpan.length; i++)
     {
         closeSpan[i].addEventListener("click", function()
@@ -444,7 +454,7 @@ function curatorResults(deliciousness, bite, sickness)
         modal.style.display = "none";
     });
     }
-
+    //close the modal if the user clicks off the modal
     window.addEventListener("click", function(event)
     {
         if (event.target == modal) {
