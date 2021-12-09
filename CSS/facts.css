@@ -1,0 +1,42 @@
+.flex-container
+{
+    display: flex;
+    flex-direction: row;
+    background-color:beige;
+    justify-content: center;
+    width: 80%;
+    margin-right: auto;
+    margin-left:auto;
+    flex-wrap: wrap;
+}
+.flex-container>a>div
+{
+    border: solid brown 2px;
+    height:75px;
+    text-align:center;
+    width: 200px;
+    line-height: 75px;
+    margin:1em;
+    padding:0;
+}
+.info-paragraph
+{
+    width:70%;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: large;
+    background-color: bisque;
+    padding: 1em;
+    border-radius: 8px;
+}
+.info-paragraph>p>img
+{
+    width: 400px;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
+}
+button:hover
+{
+    border: orangered solid 4px;
+}

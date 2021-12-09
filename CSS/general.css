@@ -1,10 +1,29 @@
 h1, h2, .display
 {
     text-align:center;
+    font-weight:bolder;
+    margin-right:auto;
+    margin-left:auto;
 }
 body
 {
     background-color: #d8a175;
+    margin: 0;
+    padding: 0;
+}
+header
+{
+    background-color: lightskyblue;
+    padding:1em;
+    font-weight:bold;
+    border-bottom: 5px black solid;
+}
+
+footer
+{
+    background-color: #001a57;
+    color: #99badd;
+    padding: 2em;
 }
 
 

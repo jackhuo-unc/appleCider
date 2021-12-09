@@ -290,11 +290,11 @@ function calculateCurator()
         case 'unripe':
             bite = 0;
             deliciousness *= 1;
-            sickness += 1;
+            sickness += 2;
             break;
         case 'fresh':
             deliciousness *= 1.4;
-            sickness += 1;
+            sickness += 3;
             break;
         case 'fridge':
             deliciousness *= 1.1;
@@ -335,7 +335,7 @@ function calculateCurator()
             break;
         case 'knife':
             deliciousness *= 1.0;
-            sickness += 1;
+            sickness += 2;
             break;
         case 'fists':
             deliciousness *= 1.0;
@@ -397,6 +397,8 @@ function curatorResults(deliciousness, bite, sickness)
     let loading = document.getElementById("loading"); //close the loading screen
     loading.style.display = "none";
     let purchasePrice = (deliciousness/10) * bite / sickness; //price is dependent on deliciousness, bite, and sickness
+    let curatorDisapproves = document.getElementById("curatorDisapproves");
+    let disapprovalReason = document.getElementById("disapprovalReason");
 
     if (sickness > 100 && sickness < 1000) //if the sickness levels are between 100 and 1000, the curator becomes sick
         document.getElementById("curatorSick").style.display = "block";
@@ -407,10 +409,15 @@ function curatorResults(deliciousness, bite, sickness)
         document.getElementById("curatorDies").style.display = "block";
         document.getElementById("alcohol").innerHTML = "from alcohol poisoning ";
     }
+    else if (bite>=40)
+    {
+        curatorDisapproves.style.display = "block";
+        disapprovalReason.innerHTML = "This is literally vinegar";
+    }
     else if (bite === 0) //if bite is 0, the curator is unhappy due to the flat cider
     {
-        document.getElementById("curatorDisapproves").style.display = "block";
-        document.getElementById("disapprovalReason").innerHTML = "This cider is flat";
+        curatorDisapproves.style.display = "block";
+        disapprovalReason.innerHTML = "This cider is flat";
     }
     else if(deliciousness > 100 && bite < 15) //if deliciousness is high yet bite is low, then the curator is confused because it's effectively apple juice
     {
@@ -419,8 +426,8 @@ function curatorResults(deliciousness, bite, sickness)
     }
     else if(deliciousness < 100) //if deliciousness is low, curator is unhappy because it tastes bad
     {
-        document.getElementById("curatorDisapproves").style.display = "block";
-        document.getElementById("disapprovalReason").innerHTML = "This doesn't taste good.";
+        curatorDisapproves.style.display = "block";
+        disapprovalReason.innerHTML = "This doesn't taste good.";
     }
     else if(deliciousness > 100 && bite >=15) //if the deliciousness and bite are sufficiently high, the curator is happy and gives a price
     {

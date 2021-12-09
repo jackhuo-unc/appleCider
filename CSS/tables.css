@@ -19,12 +19,14 @@ th, td
 th
 {
     background-color: bisque;
+    font-size:x-large;
 }
 
 td
 {
     background-color:beige;
     position: relative;
+    font-size:large;
 }
 
 .imgbox
@@ -34,9 +36,10 @@ td
 }
 .center-fit
 {
-    max-width: 100%;
+    max-width: 80%;
     max-height: 100%;
     margin: auto;
+    padding-bottom: 3em;
 }
 td .align-input
 {
@@ -62,7 +65,7 @@ td .align-input
 }
 #submitButton:hover
 {
-    border: solid 2px orange;
+    border: solid 4px orange;
 }
 #rightFloatStats
 {
@@ -91,9 +94,8 @@ td .align-input
     overflow: auto; 
     background-color: rgb(0,0,0); 
     background-color: rgba(0,0,0,0.4); 
-  }
+}
   
-  /* Modal Content/Box */
 .modal-content 
 {
     background-color: #fefefe;
@@ -103,7 +105,6 @@ td .align-input
     width: 80%; 
 }
   
-  /* The Close Button */
 .close 
 {
     color: #aaa;
@@ -132,4 +133,24 @@ td .align-input
     text-align: center;
     color: white;
 
+}
+input
+{
+    height: 50px;
+    font-size:large;
+    border-radius:4px;
+    background-color:beige;
+    text-align:center;
+}
+input:hover
+{
+    background-color: lightcyan;
+}
+input:focus
+{
+    background-color:lightblue;
+}
+#rightFloatStats
+{
+    font-size:larger;
 }
